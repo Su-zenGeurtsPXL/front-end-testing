@@ -1,35 +1,40 @@
-@import './base.css';
+body {
+height: 100vh;
+margin: 0;
+}
 
-#app {
-  max-width: 1280px;
-  margin: 0 auto;
+/* #app {
+  margin: 0;
   padding: 2rem;
   font-weight: normal;
+} */
+
+/* #app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+} */
+
+#app {
+    background-color: red !important;
+    /* border: solid 1px white !important;
+    
+    height: 100vh !important;
+    width: 100vw !important;
+    margin: auto !important;
+    padding: 0 !important; */
+    /* position: absolute !important;  */
+    /* top: 0 !important;  */
+    /* left: 0 !important; */
+    /* display: block !important; */
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
+body {
+    /* background-color: blue !important; */
 }
 
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
-}
-
-@media (min-width: 1024px) {
-  body {
-    display: flex;
-    place-items: center;
-  }
-
-  #app {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
-  }
+.basemap {
+    /* border: 1px solid red; */
+  /* width: 100vw !important; */
+  /* height: 100vh !important; */
 }

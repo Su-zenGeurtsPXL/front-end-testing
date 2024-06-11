@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "vue": "^3.4.21",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vue-mapbox-ts": "^0.9.10"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
