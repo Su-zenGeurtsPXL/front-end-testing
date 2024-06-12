@@ -1,63 +1,3 @@
-<script lang="ts">
-import { defineComponent, ref, computed, onMounted } from 'vue';
-// import { fetchMenu } from '../services/api';
-
-interface Mission {
-  id: number;
-  location: string;
-  coor: string;
-}
-
-export default defineComponent({
-  name: 'HomeView',
-  setup() {
-    // Show or hide BUTTON
-    const status = ref<boolean>(false);
-
-    const toggleStatus = () => {
-      status.value = !status.value;
-    };
-
-    const missions = ref<Mission[]>([{
-      id: 0,
-      location: 'Loading...',
-      coor: 'Loading...',
-    }]);
-
-    const fetchMissions = async () => {
-      try {
-        const response = await fetch('http://localhost:3000/missions');
-        // console.log('response.ok: ' + response.ok);
-        // console.log('response.json(): ' + await response.json());
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const data: Mission[] = await response.json();
-        missions.value = data;
-      } catch (error) {
-        console.error('There was a problem with the fetch operation:', error);
-      }
-    };
-
-    onMounted(() => {
-      fetchMissions();
-    });
-
-    const statusMessage = computed(() => {
-      return status.value ? 'Status is true' : 'Status is false';
-    });
-
-    return {
-      status,
-      toggleStatus,
-      missions,
-      statusMessage,
-    };
-  },
-});
-</script>
-
 <template>
   <button v-on:click="toggleStatus">
     <p v-if="status">Hide missions</p>
@@ -81,3 +21,59 @@ export default defineComponent({
     </tbody>
   </table>
 </template>
+
+<script lang="ts">
+import { defineComponent, ref, computed, onMounted } from 'vue';
+
+export interface Mission {
+  id: number;
+  location: string;
+  coor: string;
+}
+
+export const fetchMissions = async (): Promise<Mission[]> => {
+  const response = await fetch('http://localhost:3000/missions');
+  if (!response.ok) {
+    throw new Error('Network response was not ok');
+  }
+  const data: Mission[] = await response.json();
+  return data;
+};
+
+export default defineComponent({
+  name: 'HomeView',
+  setup() {
+    // Show or hide BUTTON
+    const status = ref<boolean>(true);
+
+    const toggleStatus = () => {
+      status.value = !status.value;
+    };
+
+    const missions = ref<Mission[]>([]);
+
+    const loadMissions = async () => {
+      try {
+        missions.value = await fetchMissions();
+      } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+      }
+    };
+
+    onMounted(() => {
+      loadMissions();
+    });
+
+    const statusMessage = computed(() => {
+      return status.value ? 'Status is true' : 'Status is false';
+    });
+
+    return {
+      status,
+      toggleStatus,
+      missions,
+      statusMessage,
+    };
+  },
+});
+</script>
