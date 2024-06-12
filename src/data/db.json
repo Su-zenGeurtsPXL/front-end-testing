@@ -1,0 +1,29 @@
+{
+  "missions": [
+    {
+      "id": 1,
+      "location": "Hagenberg",
+      "coor": "14.51446, 48.368721"
+    },
+    {
+      "id": 2,
+      "location": "Vienna",
+      "coor": "16.373819, 48.208174"
+    },
+    {
+      "id": 3,
+      "location": "Salzburg",
+      "coor": "13.047658, 47.809490"
+    },
+    {
+      "id": 4,
+      "location": "Graz",
+      "coor": "15.439504, 47.070714"
+    },
+    {
+      "id": 5,
+      "location": "Innsbruck",
+      "coor": "11.404102, 47.268421"
+    }
+  ]
+}

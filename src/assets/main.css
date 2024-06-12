@@ -1,17 +1,51 @@
-html {
-  /* background-color: purple !important; */
-height: 100% !important;
-margin: 0;
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-size: 18px;
+  text-align: left;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
 }
 
-body {
-  /* background-color: blue !important; */
-  height: 100% !important;
-  margin: 0;
+th,
+td {
+  border: 1px solid #dddddd;
+  padding: 12px 15px;
 }
 
-#app {
-    /* background-color: red !important; */
-    height: 100vh !important;
-    width: 100vw !important;
+th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #a9e7ab;
+}
+
+td {
+  color: #555;
+}
+
+button {
+  background-color: #c1ffc3;
+  color: black;
+  border: none;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px 0;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+  box-shadow: 0 2px 3px rgba(0,0,0,0.1);
+}
+
+button:hover {
+  background-color: #a9e7ab;
 }

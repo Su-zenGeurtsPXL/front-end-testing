@@ -1,33 +1,76 @@
-<script setup lang="ts">
-import { MapboxMap, MapboxMarker, MapboxNavigationControl } from 'vue-mapbox-ts';
-import { Map as MapboxMapObject } from 'mapbox-gl';
+<script lang="ts">
+import { defineComponent, ref, computed, onMounted } from 'vue';
+// import { fetchMenu } from '../services/api';
 
-const accessToken =
-  'pk.eyJ1Ijoiamlhbmd4aXV6aGVuIiwiYSI6ImNseGFzbWk3MTA3NXYybXMzNHN5OTVpbXAifQ.Ou5LyHrssSEh3dlhsGjcHg';
-const mapStyle = 'mapbox://styles/mapbox/streets-v11';
-const mapCenter = [14.51446, 48.368721];
-const mapZoom = 15;
+interface Mission {
+  id: number;
+  location: string;
+  coor: string;
+}
 
-console.log('Loading Map...');
+export default defineComponent({
+  name: 'HomeView',
+  setup() {
+    // Show or hide BUTTON
+    const status = ref<boolean>(true);
+
+    const toggleStatus = () => {
+      status.value = !status.value;
+    };
+
+    const missions = ref<Mission[]>([]);
+
+    const fetchMissions = async () => {
+      try {
+        const response = await fetch('http://localhost:3000/missions');
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const data: Mission[] = await response.json();
+        missions.value = data;
+      } catch (error) {
+        console.error('There was a problem with the fetch operation:', error);
+      }
+    };
+
+    onMounted(() => {
+      fetchMissions();
+    });
+
+    const statusMessage = computed(() => {
+      return status.value ? 'Status is true' : 'Status is false';
+    });
+
+    return {
+      status,
+      toggleStatus,
+      missions,
+      statusMessage,
+    };
+  },
+});
 </script>
 
 <template>
-  <mapbox-map
-    :accessToken="accessToken"
-    :mapStyle="mapStyle"
-    :draggable="true"
-    :center="mapCenter"
-    :zoom="mapZoom"
-    class="map"
-  >
-    <mapbox-marker :lngLat="[14.51446, 48.368721]"> </mapbox-marker>
-  </mapbox-map>
+  <button v-on:click="toggleStatus">
+    <p v-if="status">Hide missions</p>
+    <p v-else>Show missions</p>
+  </button>
+
+  <table v-show="status">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Location</th>
+        <th>Coordinates</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="mission in missions" :key="mission.id">
+        <td>{{ mission.id }}</td>
+        <td>{{ mission.location }}</td>
+        <td>{{ mission.coor }}</td>
+      </tr>
+    </tbody>
+  </table>
 </template>
-
-<style>
-.map {
-  /* width: 100vw !important; */
-  /* height: 100vh !important; */
-}
-
-</style>
