@@ -1,13 +1,14 @@
-body {
-height: 100vh;
+html {
+  /* background-color: purple !important; */
+height: 100% !important;
 margin: 0;
 }
 
-/* #app {
+body {
+  /* background-color: blue !important; */
+  height: 100% !important;
   margin: 0;
-  padding: 2rem;
-  font-weight: normal;
-} */
+}
 
 /* #app {
   min-height: 100%;
@@ -16,11 +17,15 @@ margin: 0;
 } */
 
 #app {
-    background-color: red !important;
-    /* border: solid 1px white !important;
-    
+    /* background-color: red !important; */
     height: 100vh !important;
     width: 100vw !important;
+    /* margin: 0 !important; */
+    /* padding: 2rem; */
+    /* font-weight: normal; */
+    /* border: solid 1px white !important;
+    
+
     margin: auto !important;
     padding: 0 !important; */
     /* position: absolute !important;  */
@@ -34,7 +39,7 @@ body {
 }
 
 .basemap {
-    /* border: 1px solid red; */
+  /* border: 1px solid red; */
   /* width: 100vw !important; */
   /* height: 100vh !important; */
 }
