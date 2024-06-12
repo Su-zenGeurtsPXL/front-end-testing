@@ -12,20 +12,27 @@ export default defineComponent({
   name: 'HomeView',
   setup() {
     // Show or hide BUTTON
-    const status = ref<boolean>(true);
+    const status = ref<boolean>(false);
 
     const toggleStatus = () => {
       status.value = !status.value;
     };
 
-    const missions = ref<Mission[]>([]);
+    const missions = ref<Mission[]>([{
+      id: 0,
+      location: 'Loading...',
+      coor: 'Loading...',
+    }]);
 
     const fetchMissions = async () => {
       try {
         const response = await fetch('http://localhost:3000/missions');
+        // console.log('response.ok: ' + response.ok);
+        // console.log('response.json(): ' + await response.json());
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+
         const data: Mission[] = await response.json();
         missions.value = data;
       } catch (error) {
