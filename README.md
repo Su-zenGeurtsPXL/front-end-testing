@@ -35,5 +35,11 @@ npm run build
 ### Run Unit Tests with [Vitest](https://vitest.dev/)
 
 ```sh
-npm run test:unit
+npm run unit
+```
+
+### Run Unit Tests with [Vitest](https://vitest.dev/) and get UI
+
+```sh
+npm run unit:ui
 ```
