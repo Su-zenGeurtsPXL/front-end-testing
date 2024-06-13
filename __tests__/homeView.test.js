@@ -8,7 +8,7 @@ import {
   vi,
   toHaveBeenCalled,
 } from 'vitest';
-import HomeView, { purchases } from '@/views/HomeView.vue';
+import HomeView from '@/views/HomeView.vue';
 
 describe('purchasing flow', () => {
   const businessHourshours = [9, 18];
