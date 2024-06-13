@@ -27,7 +27,7 @@ const basket = {
 };
 
 // Test the getCheapest function
-describe('reading basket', () => {
+describe('getCheapest()', () => {
   // Restore all mocks after each test
   afterEach(() => {
     vi.restoreAllMocks();
