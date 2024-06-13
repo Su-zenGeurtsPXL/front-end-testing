@@ -7,14 +7,14 @@
     "dev": "vite",
     "build": "run-p type-check \"build-only {@}\" --",
     "preview": "vite preview",
+    "build-only": "vite build",
+    "type-check": "vue-tsc --build --force",
     "unit": "vitest",
     "unit:ui": "vitest --ui",
-    "build-only": "vite build",
-    "type-check": "vue-tsc --build --force"
+    "unit:coverage": "vitest --coverage"
   },
   "dependencies": {
     "vue": "^3.4.21",
-    "vue-mapbox-ts": "^0.9.10",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {

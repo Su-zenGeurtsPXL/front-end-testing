@@ -38,7 +38,7 @@ describe('purchasing flow', () => {
     button.trigger('click');
 
     expect(now.getHours())
-      .toBeGreaterThan(9)
+      .toBeGreaterThan(businessHourshours[0])
       .toBeLessThan(businessHourshours[1]);
     expect(now.valueOf()).toBe(mockDate.valueOf());
 
@@ -56,8 +56,6 @@ describe('purchasing flow', () => {
 
     expect(now.getHours()).toBeGreaterThan(businessHourshours[1]);
     expect(wrapper.vm.message).toEqual('Purchase: Error');
-
-    vi.useRealTimers();
   });
 
   it('disallows purchases before business hours', () => {

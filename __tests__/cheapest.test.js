@@ -26,7 +26,7 @@ describe('reading basket', () => {
     vi.restoreAllMocks()
   })
 
-  it('should get the latest basket item with a spy', () => {
+  it('should get the cheapest basket item with a spy', () => {
     const spy = vi.spyOn(basket, 'getCheapest')
     expect(spy.getMockName()).toEqual('getCheapest')
 
