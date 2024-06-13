@@ -29,7 +29,6 @@ export default defineComponent({
         const purchaseData = purchase();
         message.value = 'Purchase: ' + purchaseData.message;
       } else {
-        console.log('selling...');
         message.value = '';
       }
       purchased.value = !purchased.value;
