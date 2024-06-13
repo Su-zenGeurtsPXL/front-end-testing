@@ -1,33 +1,45 @@
-<script setup lang="ts">
-import { MapboxMap, MapboxMarker, MapboxNavigationControl } from 'vue-mapbox-ts';
-import { Map as MapboxMapObject } from 'mapbox-gl';
-
-const accessToken =
-  'pk.eyJ1Ijoiamlhbmd4aXV6aGVuIiwiYSI6ImNseGFzbWk3MTA3NXYybXMzNHN5OTVpbXAifQ.Ou5LyHrssSEh3dlhsGjcHg';
-const mapStyle = 'mapbox://styles/mapbox/streets-v11';
-const mapCenter = [14.51446, 48.368721];
-const mapZoom = 15;
-
-console.log('Loading Map...');
-</script>
-
 <template>
-  <mapbox-map
-    :accessToken="accessToken"
-    :mapStyle="mapStyle"
-    :draggable="true"
-    :center="mapCenter"
-    :zoom="mapZoom"
-    class="map"
-  >
-    <mapbox-marker :lngLat="[14.51446, 48.368721]"> </mapbox-marker>
-  </mapbox-map>
+  <button v-on:click="purchase">
+    <p v-if="purchased">Undo</p>
+    <p v-else>Purchase</p>
+  </button>
+  <p>{{ message }}</p>
 </template>
 
-<style>
-.map {
-  /* width: 100vw !important; */
-  /* height: 100vh !important; */
-}
+<script lang="ts">
+import { defineComponent, ref, computed, onMounted } from 'vue';
 
-</style>
+export const purchase = () => {
+  const businessHours = [9, 18];
+  const currentHour = new Date().getHours();
+  const [open, close] = businessHours;
+
+  if (currentHour > open && currentHour < close) return { message: 'Success' };
+
+  return { message: 'Error' };
+};
+
+export default defineComponent({
+  name: 'HomeView',
+  setup() {
+    const purchased = ref<boolean>(false);
+    const message = ref<string>('Nothing happened yet');
+    const toggleStatus = () => {
+      if (!purchased.value) {
+        const purchaseData = purchase();
+        message.value = 'Purchase: ' + purchaseData.message;
+      } else {
+        console.log('selling...');
+        message.value = '';
+      }
+      purchased.value = !purchased.value;
+    };
+
+    return {
+      purchased,
+      message,
+      purchase: toggleStatus,
+    };
+  },
+});
+</script>
