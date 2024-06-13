@@ -1,5 +1,5 @@
 <template>
-  <button v-on:click="purchase">
+  <button v-on:click="toggleStatus">
     <p v-if="purchased">Undo</p>
     <p v-else>Purchase</p>
   </button>
@@ -9,15 +9,7 @@
 <script lang="ts">
 import { defineComponent, ref, computed, onMounted } from 'vue';
 
-export const purchase = () => {
-  const businessHours = [9, 18];
-  const currentHour = new Date().getHours();
-  const [open, close] = businessHours;
-
-  if (currentHour > open && currentHour < close) return { message: 'Success' };
-
-  return { message: 'Error' };
-};
+export const purchase = () => {};
 
 export default defineComponent({
   name: 'HomeView',
@@ -26,8 +18,13 @@ export default defineComponent({
     const message = ref<string>('Nothing happened yet');
     const toggleStatus = () => {
       if (!purchased.value) {
-        const purchaseData = purchase();
-        message.value = 'Purchase: ' + purchaseData.message;
+        const businessHours = [9, 18];
+        const currentHour = new Date().getHours();
+        const [open, close] = businessHours;
+        const openBusiness = currentHour > open && currentHour < close;
+
+        message.value = 'Purchase: ';
+        message.value += openBusiness ? 'Success' : 'Error';
       } else {
         message.value = '';
       }
@@ -37,7 +34,7 @@ export default defineComponent({
     return {
       purchased,
       message,
-      purchase: toggleStatus,
+      toggleStatus,
     };
   },
 });
