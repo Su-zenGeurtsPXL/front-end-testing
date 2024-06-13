@@ -14,7 +14,8 @@
   "dependencies": {
     "vue": "^3.4.21",
     "vue-mapbox-ts": "^0.9.10",
-    "vue-router": "^4.3.0"
+    "vue-router": "^4.3.0",
+    "vue3-jest": "^27.0.0-alpha.1"
   },
   "devDependencies": {
     "@tsconfig/node20": "^20.1.4",
@@ -22,8 +23,9 @@
     "@types/node": "^20.12.5",
     "@vitejs/plugin-vue": "^5.0.4",
     "@vitest/ui": "^1.6.0",
-    "@vue/test-utils": "^2.4.5",
+    "@vue/test-utils": "^2.4.6",
     "@vue/tsconfig": "^0.5.1",
+    "jest": "^29.7.0",
     "jsdom": "^24.0.0",
     "npm-run-all2": "^6.1.2",
     "typescript": "~5.4.0",
