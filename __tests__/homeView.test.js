@@ -1,4 +1,4 @@
-import { mount } from '@vue/test-utils';
+import { shallowMount } from '@vue/test-utils';
 import {
   afterEach,
   beforeEach,
@@ -22,14 +22,14 @@ describe('purchasing flow', () => {
   });
 
   it('displays correct text in button to purchase', () => {
-    const wrapper = mount(HomeView);
+    const wrapper = shallowMount(HomeView);
     const button = wrapper.find('button');
 
     expect(button.text()).toEqual('Purchase');
   });
 
   it('allows purchases within business hours', () => {
-    const wrapper = mount(HomeView);
+    const wrapper = shallowMount(HomeView);
     const button = wrapper.find('button');
     const mockDate = new Date(2024, 6, 5, 13);
 
@@ -46,7 +46,7 @@ describe('purchasing flow', () => {
   });
 
   it('disallows purchases after business hours', () => {
-    const wrapper = mount(HomeView);
+    const wrapper = shallowMount(HomeView);
     const button = wrapper.find('button');
     const mockDate = new Date(2024, 6, 5, 23);
 
@@ -61,7 +61,7 @@ describe('purchasing flow', () => {
   });
 
   it('disallows purchases before business hours', () => {
-    const wrapper = mount(HomeView);
+    const wrapper = shallowMount(HomeView);
     const button = wrapper.find('button');
     const mockDate = new Date(2024, 6, 5, 5);
 
