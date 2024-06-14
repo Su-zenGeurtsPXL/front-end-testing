@@ -10,6 +10,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "unit": "vitest",
+    "unit:watch": "vitest --watch",
     "unit:ui": "vitest --ui",
     "unit:coverage": "vitest --coverage"
   },
