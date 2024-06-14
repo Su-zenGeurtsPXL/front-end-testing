@@ -43,7 +43,7 @@ describe('getCheapest()', () => {
     expect(spy).toHaveBeenCalledTimes(0);
 
     // Check the return value of the spy
-    expect(basket.getCheapest()).toEqual(basket.items[1]);
+    expect(basket.getCheapest()).toBe(basket.items[1]);
     expect(spy).toHaveBeenCalledTimes(1);
 
     // Mock the return value of the spy
@@ -52,7 +52,7 @@ describe('getCheapest()', () => {
     expect(spy).toHaveBeenCalledTimes(2);
 
     // Check that the mocked the return value once
-    expect(basket.getCheapest()).toEqual(basket.items[1]);
+    expect(basket.getCheapest()).toBe(basket.items[1]);
   });
 
     // Test the getCheapest function with a mock
@@ -61,7 +61,7 @@ describe('getCheapest()', () => {
     const mock = vi.fn().mockImplementation(getCheapest);
 
     // Check the return value of the spy
-    expect(mock()).toEqual(basket.items[1]);
+    expect(mock()).toBe(basket.items[1]);
     expect(mock).toHaveBeenCalledTimes(1);
 
     // Mock the getCheapest function with a return value
@@ -70,7 +70,7 @@ describe('getCheapest()', () => {
     expect(mock).toHaveBeenCalledTimes(2);
 
     // Check that the mocked the return value once
-    expect(mock()).toEqual(basket.items[1]);
+    expect(mock()).toBe(basket.items[1]);
     expect(mock).toHaveBeenCalledTimes(3);
   });
 });
