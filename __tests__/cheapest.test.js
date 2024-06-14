@@ -47,8 +47,8 @@ describe('getCheapest()', () => {
     expect(spy).toHaveBeenCalledTimes(1);
 
     // Mock the return value of the spy
-    spy.mockImplementationOnce(() => 'There ar no dresses in the basket');
-    expect(basket.getCheapest()).toEqual('There ar no dresses in the basket');
+    spy.mockImplementationOnce(() => 'There are no dresses in the basket');
+    expect(basket.getCheapest()).toEqual('There are no dresses in the basket');
     expect(spy).toHaveBeenCalledTimes(2);
 
     // Check that the mocked the return value once
@@ -65,8 +65,8 @@ describe('getCheapest()', () => {
     expect(mock).toHaveBeenCalledTimes(1);
 
     // Mock the getCheapest function with a return value
-    mock.mockImplementationOnce(() => 'There ar no dresses in the basket');
-    expect(mock()).toEqual('There ar no dresses in the basket');
+    mock.mockImplementationOnce(() => 'There are no dresses in the basket');
+    expect(mock()).toEqual('There are no dresses in the basket');
     expect(mock).toHaveBeenCalledTimes(2);
 
     // Check that the mocked the return value once
